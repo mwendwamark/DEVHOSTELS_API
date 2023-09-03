@@ -1,0 +1,2 @@
+class HostelsController < ApplicationController
+end
