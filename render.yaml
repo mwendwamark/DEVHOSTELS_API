@@ -1,0 +1,18 @@
+databases:
+  - name: DEVHOSTELS_API
+    databaseName: DEVHOSTELS_API
+    user: DEVHOSTELS_API
+
+services:
+  - type: web
+    name: DEVHOSTELS_API
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: DEVHOSTELS_API
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
